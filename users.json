@@ -1,0 +1,10 @@
+[
+{"type":"header","version":"4.7.4","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"flower_chimp"},
+{"type":"table","name":"users","database":"flower_chimp","data":
+[
+{"ID":"1","LName":"Lebitan","FName":"Zaira May","MName":"Penta\u00c3\u00b1o","Email":"zaira_lebitan@yahoo.com","Birthdate":"1998-07-16","Gender":"Female","Address":"Jaro, Iloilo City","Username":"zaira","Password":"zaira"},
+{"ID":"2","LName":"Doe","FName":"John","MName":"Woodlawn","Email":"doe_john@gmail.com","Birthdate":"1987-09-09","Gender":"Male","Address":"Las Vegas, Nevada, USA","Username":"john_doe","Password":"johndoe"}
+]
+}
+]

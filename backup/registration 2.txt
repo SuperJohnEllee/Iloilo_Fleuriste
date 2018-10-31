@@ -1,0 +1,47 @@
+ <div class="container">
+ <center> <h1 class="create"> CREATE ACCOUNT </h1>
+ <p> Create an account for access to your address book, express checkout, order history,
+	  Iloilo Fleuriste rewards and gift reminders.</p> </center> <hr>
+
+	 <form class="modal-content" method="post">
+
+	  <center><br><label for="email"><b>EMAIL</b></label>
+      <br> <input class="form-control" type="email" placeholder="Enter Email" name="email" required>
+
+      <label for="psw"><b>CREATE PASSWORD</b></label>
+      <input class="form-control" type="password" placeholder="Enter Password" name="password" required>
+	  <p> Password must be at least 7 characters long and contain both letters 
+	  and numbers. </p>
+
+      <center><label for="psw-repeat"><b>CONFIRM PASSWORD</b></label><center>
+      <center><input class="form-control" type="password" placeholder="Confirm Password" name="confirm_password" required><center/>
+	  
+	  <center><br><label for="f-name"><b>FIRSTNAME</b></label><center>
+       <input class="form-control" type="text" placeholder="" name="first_name" required>
+	  
+	   <center><br><label for="l-name"><b>LASTNAME</b></label><center>
+       <input class="form-control" type="text" placeholder="" name="last_name" required>
+	  
+       <center><br><label><b>MIDDLE NAME</b></label></center>
+       <input class="form-control" type="text" name="mid_name" required>
+
+	  <center><br><label for="contact"><b>CONTACT NUMBER</b></label><center>
+      <input class="form-control" type="text" placeholder="" name="contact_num" required maxlength="11">
+	  
+	  
+	 <center><br><label for="b-day"><b>BIRTHDAY</b></label><center>
+      <input class="form-control" type="date" placeholder="" name="bdate" required>
+	  
+	 <center><br><label for="add"><b>ADDRESS</b></label><center>
+       <input class="form-control" type="text" placeholder="" name="address" required>
+	   
+	  <center><br><label for="gender"><b>GENDER</b> </label><center>
+	   <input class="form-control" type="radio" name="gender" value="Male" required> Male<br>
+	   <input class="form-control" type="radio" name="gender" value="female" required> Female<br> </center>
+	  
+	  <div class="clearfix">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        <button type="submit" class="signupbtn" name="register">Sign Up</button>
+      </div>
+	  </div>
+  </form>

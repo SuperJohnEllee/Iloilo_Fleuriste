@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="Content-Type" content="IE=edge">
+	<title>Iloilo Fleuriste</title>
+	<link rel="icon" href="img/zaira.jpg">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/jquery.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<form class="col-md-5" method="post">
+  <div class="form-group">
+    <label for="email">Username</label>
+    <input type="text" class="form-control" id="username" name="username">
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" class="form-control" id="pwd" name="password">
+  </div>
+  <div class="form-group">
+  	<a href="admin_login.php">Logged in as Admin</a>
+  </div>
+  <button type="submit" name="login" class="btn btn-default">Submit</button>
+</form>	
+</div>
+<?php
+	//connection string
+	$conn = mysqli_connect('localhost', 'root', '', 'iloilo_fleuriste')
+	or die('Connection Failed ' . mysqli_error());
+
+	session_start(); //starts the session
+	if (isset($_POST['login'])) {
+		
+		//define username and password
+		$username = $_POST['username'];
+		$password = $_POST['password'];
+
+		//Protection from MySQL Injection
+		$username = stripslashes($username); //removes backslashes
+		$password = stripslashes($password);
+		$username = mysqli_real_escape_string($conn, $username); //escapes special characters
+		$password = mysqli_real_escape_string($conn, $password); //in a string for use in a SQL Statement, specifies the MySQL 
+
+		//check if username is existing
+		$check_user = mysqli_query($conn,"SELECT * FROM users WHERE Username = '$username'"); //query start
+		$check_count = mysqli_num_rows($check_user); // count number of rows existing --> returns the number of rows
+		$check_row = mysqli_fetch_assoc($check_user);// fetch data in the database --> fetch a result row in an associative array
+
+		//db variables
+		$res_username = $check_row['Username'];
+		$res_fullname = $check_row['FirstName'] . " ". $check_row['MiddleName'] . " " . $check_row['LastName']; //concact fullname
+		$res_name = $check_row['FirstName'] . " " . $check_row['LastName']; //concat name
+		$res_pass = $check_row['Password'];
+
+
+		if ($check_count > 0) {
+			if ($res_pass == $password) {
+				//session variables
+				$_SESSION['username'] = $res_username;
+				$_SESSION['password'] = $res_pass;
+				$_SESSION['name'] = $res_name;
+				$_SESSION['fullname'] = $res_fullname;
+
+				header("location: user_dashboard.php");
+			} else {
+				echo "<script>
+					alert('Incorrect Password');
+				</script>";
+			}
+		} else {
+			echo "<script>
+				alert('Invalid Username');
+			</script>";
+		}
+
+	}
+?>
+</body>
+</html>
